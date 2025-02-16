@@ -14,7 +14,7 @@ export const getRecipes = async(req, res, next) => {
             ]
         });
 
-        return res.status(200).json({ success: true, recipes: recipes }).send();
+        return res.status(200).json({ success: true, recipes: recipes });
     } catch (error) {
         next(error);
     }
@@ -38,7 +38,7 @@ export const createRecipe = async(req, res, next) => {
             cookingTime: recipe.data.cookingTime,
         });
 
-        return res.status(201).json({ success: true, recipe: newRecipe }).send();
+        return res.status(201).json({ success: true, recipe: newRecipe });
     } catch (error) {
         next(error);
     }
@@ -61,7 +61,7 @@ export const updateRecipe = async(req, res, next) => {
             cookingTime: recipe.data.cookingTime,
         }, { new: true });
 
-        return res.status(200).json({ success: true, recipe: updatedRecipe }).send();
+        return res.status(200).json({ success: true, recipe: updatedRecipe });
     } catch (error) {
         next(error);
     }
@@ -75,7 +75,7 @@ export const deleteRecipe = async(req, res, next) => {
         if (!recipe) {
             throw new NotFoundError(`Recipe with id ${id} not found`);
         }
-        return res.status(200).json({ success: true, message: "Recipe deleted successfully" }).send();
+        return res.status(200).json({ success: true, message: "Recipe deleted successfully" });
     } catch (error) {
         next(error);
     }
@@ -91,7 +91,7 @@ export const getRecipeById = async(req, res, next) => {
         if (!recipe) {
             throw new NotFoundError(`Recipe with id ${id} not found`);
         }
-        return res.status(200).json({ success: true, recipe: recipe }).send();
+        return res.status(200).json({ success: true, recipe: recipe });
     } catch (error) {
         next(error);
     }
