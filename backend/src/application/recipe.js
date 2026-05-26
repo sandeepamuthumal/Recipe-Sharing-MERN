@@ -14,7 +14,7 @@ export const getRecipes = async(req, res, next) => {
             ]
         });
 
-        return res.status(200).json({ success: true, recipes: recipes });
+        return res.status(200).json({ success: true, recipes: recipes.map(recipe => recipe.toJSON()) });
     } catch (error) {
         next(error);
     }
