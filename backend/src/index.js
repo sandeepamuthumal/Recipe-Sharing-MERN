@@ -7,7 +7,22 @@ import cors from "cors";
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+const allowedOrigins = [
+    "http://localhost",
+    "http://localhost:5173"
+];
+
+app.use(
+    cors({
+        origin: function(origin, callback) {
+            if (!origin || allowedOrigins.includes(origin)) {
+                return callback(null, true);
+            }
+
+            callback(new Error("Not allowed by CORS"));
+        },
+    })
+);
 
 app.use("/api/recipes", recipeRouter);
 
