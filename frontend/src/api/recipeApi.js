@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const API_BASE_URL = "http://localhost:5000/api/recipes";
+const API_BASE_URL = "/api/recipes";
 
 // Fetch all recipes
 export const getAllRecipes = async(search) => {
